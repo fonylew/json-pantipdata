@@ -1,23 +1,29 @@
 #!/usr/bin/python
 
 import json,sys
+from pprint import pprint
 
-# get folder name and check if it's empty
+#with open(str(sys.argv[1])) as data_file:
+#    data = json.load(data_file)
+
 try:
     folder = input("folder name (can leave blank) : ")
 except SyntaxError:
     folder = False
 
-# get start filename and end filename
-start_file = input("start file number (without .json) : ")
+data_file = input("start file number (without .json) : ")
 end_file = input("end file number (without .json) : ")
 
-# create output file named as folder name
 f = open(str(folder), 'w')
 
-# loop in all files in range
-for n in range(start_file,end_file+1):
-    # check if that file exists
+#pprint(data)
+#pprint(data["comments"])
+#print data["user"]["id"]
+#print data["user"]["name"]
+#print data["emotion"]["likeScore"]
+#print data["emotion"]["voters"]#["userId"]
+
+for n in range(data_file,end_file):
     try:
         if not folder:
             data = json.load(open(str("../pantip-samples/"+str(n)+".json")))
@@ -25,10 +31,9 @@ for n in range(start_file,end_file+1):
             data = json.load(open(str("../pantip-samples/"+str(folder)+"/"+str(n)+".json")))
     except IOError:
         continue
-    # loop in all comments 
     for i in range(len(data["comments"])):
         print data["user"]["id"] +','+ data["comments"][i]["user"]["id"]
-        # print to out file
         f.write(data["user"]["id"] +','+ data["comments"][i]["user"]["id"]+"\n")
+        #print len(data["comments"])
 f.close()
 print "--end--"
