@@ -9,8 +9,11 @@ except SyntaxError:
     folder = False
 
 # get start filename and end filename
-start_file = input("start file number (without .json) : ")
-end_file = input("end file number (without .json) : ")
+# start_file = input("start file number (without .json) : ")
+# end_file = input("end file number (without .json) : ")
+
+start_file = 0000
+end_file = 9999
 
 # create output file named as folder name
 f = open(str(folder), 'w')
