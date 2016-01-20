@@ -1,0 +1,24 @@
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/comment.csv" AS nodeComment
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/room.csv" AS nodeRoom
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/tag.csv" AS nodeTag
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/topic.csv" AS nodeTopic
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/user.csv" AS nodeUser
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/classed.csv" AS relaClassed
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/comments.csv" AS relaComments
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/posted.csv" AS relaPosted
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/replied.csv" AS relaReplied
+LOAD CSV WITH HEADERS FROM "file:///Users/Fony/dev/tagged.csv" AS relaTagged
+CREATE (u:User { id: toInt(nodeUser.userId), name: nodeUser.userName })
+CREATE (c:Comment { id: toInt(nodeComment.commentId), timestamp: nodeComment.timestamp })
+CREATE (p:Topic { id: toInt(nodeTopic.topicId), timestamp: nodeTopic.timestamp, like: nodeTopic.like, emo: nodeTopic.emo })
+CREATE (r:Room { name: nodeRoom.roomName })
+CREATE (t:Tag { name: nodeTag.tagName })
+CREATE INDEX ON :User(name)
+CREATE INDEX ON :Comment(id)
+CREATE INDEX ON :Topic(id)
+CREATE INDEX ON :Room(name)
+CREATE INDEX ON :Tag(name)
+
+
+

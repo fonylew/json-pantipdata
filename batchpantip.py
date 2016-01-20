@@ -27,8 +27,8 @@ tagged = open("[tagged].csv",'w')
 classed = open("[classed].csv",'w')
 # -- Header --
 user.write("userId,userName\n")
-comment.write("commentId,topicId,timestamp\n")
-topic.write("topicId,userId,timestamp,like,emo\n")
+comment.write("commentId,timestamp\n")
+topic.write("topicId,timestamp,like,emo\n")
 tag.write("tagName\n")
 room.write("roomName\n")
 posted.write("userId,topicId\n")
@@ -50,30 +50,30 @@ for folder in range(start_file, end_file+1):
         except ValueError:
             print str(folder)+str(n)
             continue
-        # not in comment
-        # use set to unique
-        if 'user' in data:
-            user.write(str(data["user"]["id"])+","+data["user"]["name"]+"\n")
-            posted.write(str(data["user"]["id"])+","+str(data["id"])+"\n")
-        # loop in all rooms (forums in json file)
-        if 'user' in data:
-            topic.write(str(data["id"])+","+str(data["user"]["id"])+","+data["timestampISO"]+","+str(data["emotion"]["likeScore"])+","+str(data["emotion"]["emotionScore"])+"\n")
-        for i in range(len(data["forums"])):
-            room.write(data["forums"][i]+"\n")
-            classed.write(str(data["id"])+","+data["forums"][i]+"\n")
-        for i in range(len(data["tags"])):
-            tag.write(str(data["tags"][i])+"\n")
-            tagged.write(str(data["id"])+","+str(data["tags"][i])+"\n")
-        # loop in all comments 
-        for i in range(len(data["comments"])):
-            comment.write(str(data["comments"][i]["id"])+","+str(data["id"])+","+str(data["comments"][i]["timestampISO"])+"\n")
-            replied.write(str(data["user"]["id"])+","+str(data["comments"][i]["id"])+"\n")
-            comments.write(str(data["comments"][i]["id"])+","+str(data["id"])+"\n")
-            # print data["user"]["id"] +','+ data["comments"][i]["user"]["id"]
-            # print to out file
-            # f.write(data["user"]["id"] +','+ data["comments"][i]["user"]["id"]+"\n")
-            # out.write(data["user"]["id"] +','+ data["comments"][i]["user"]["id"]+"\n")
-        
+        if data["status"] == "active":
+            # not in comment
+            # use set to unique
+            if 'user' in data:
+                user.write(str(data["user"]["id"])+","+data["user"]["name"]+"\n")
+                posted.write(str(data["user"]["id"])+","+str(data["id"])+"\n")
+            # loop in all rooms (forums in json file)
+            if 'user' in data:
+                topic.write(str(data["id"])+","+data["timestampISO"]+","+str(data["emotion"]["likeScore"])+","+str(data["emotion"]["emotionScore"])+"\n")
+            for i in range(len(data["forums"])):
+                room.write(data["forums"][i]+"\n")
+                classed.write(str(data["id"])+","+data["forums"][i]+"\n")
+            for i in range(len(data["tags"])):
+                tag.write(str(data["tags"][i])+"\n")
+                tagged.write(str(data["id"])+","+str(data["tags"][i])+"\n")
+            # loop in all comments 
+            for i in range(len(data["comments"])):
+                comment.write(str(data["comments"][i]["id"])+","+str(data["comments"][i]["timestampISO"])+"\n")
+                replied.write(str(data["user"]["id"])+","+str(data["comments"][i]["id"])+"\n")
+                comments.write(str(data["comments"][i]["id"])+","+str(data["id"])+"\n")
+                # print data["user"]["id"] +','+ data["comments"][i]["user"]["id"]
+                # print to out file
+                # f.write(data["user"]["id"] +','+ data["comments"][i]["user"]["id"]+"\n")
+                # out.write(data["user"]["id"] +','+ data["comments"][i]["user"]["id"]+"\n")
     #f.close()
     print "--"+str(folder)+"--"
 user.close()
