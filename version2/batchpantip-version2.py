@@ -63,7 +63,7 @@ for folder in range(start_file, end_file+1):
                 tagged.write(str(data["id"])+","+str(data["tags"][i])+"\n")
             # loop in all comments 
             for i in range(len(data["comments"])):
-                replied.write(str(data["user"]["id"])+","+str(data["id"])+","+str(data["comments"][i]["id"])+","+str(data["comments"][i]["timestampISO"])+"\n")
+                replied.write(str(data["comments"][i]["user"]["id"])+","+str(data["id"])+","+str(data["comments"][i]["id"])+","+str(data["comments"][i]["timestampISO"])+"\n")
                 # print data["user"]["id"] +','+ data["comments"][i]["user"]["id"]
                 # print to out file
                 # f.write(data["user"]["id"] +','+ data["comments"][i]["user"]["id"]+"\n")
