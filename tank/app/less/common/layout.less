@@ -1,0 +1,77 @@
+// --------------------------------------------------
+// Layout : Main content
+// --------------------------------------------------
+
+.tank-container {
+  height: 100%;
+  padding: 0px;
+  position:relative;
+  background-color: @white;
+
+  > div {
+    height: 100%;
+  }
+
+  div.panels {
+    background-color: @secondary;
+    border: 5px solid @secondary;
+    padding: 0;
+
+    h1 {
+      display: block;
+      text-align: right;
+      padding: 10px;
+      margin: 0;
+      color: @white;
+    }
+
+    > div {
+      padding: 0;
+      height: ~"calc(100% - 60px)";
+    }
+
+    ul#menu {
+      li {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        a { color: @white; }
+
+        &.active {
+          background-color: @greyLight;
+          a { color: @primary; }
+        }
+
+        &:hover {
+          a{
+            transition: color 1s;
+            color: @primary;
+          }
+        }
+      }
+    }
+
+    div.panel {
+      background-color: @greyLight;
+      border-radius: 0 5px 5px 0;
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 5px;
+      margin-bottom: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      legend {
+        text-align: right;
+        color: @primary;
+        padding: 10px;
+      }
+    }
+  }
+  
+  #tank-container-graph {
+    height: 100%;
+  }
+
+}

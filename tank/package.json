@@ -1,0 +1,51 @@
+{
+    "author": "Benoît Simard (@logisima)",
+    "name": "tank-browser",
+    "version": "0.1.8",
+    "description" : "A neo4j cypher browser based on sigmajs",
+    "keywords" : ["neo4j", "sigma", "sigmajs", "graph", "browser", "cypher"],
+    "homepage": "https://github.com/sim51/tank-browser",
+    "bugs": "https://github.com/sim51/tank-browser/issues",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/sim51/tank-browser.git"
+    },
+    "license": "GPLv3",
+    "main": "dist/js/tank-browser.min.js",
+    "devDependencies": {
+        "gulp": "^3.0.0",
+        "gulp-util": "^3.0.0",
+        "gulp-jshint": "^1.0.0",
+        "gulp-less": "^3.0.0",
+        "gulp-concat": "^2.0.0",
+        "gulp-livereload": "^3.0.0",
+        "gulp-uglify": "^1.0.0",
+        "gulp-exec": "^2.0.0",
+        "gulp-minify-css": "^01.0.0",
+        "gulp-clean": "^0.3.0",
+        "gulp-connect": "^2.0.5",
+        "gulp-watch": "^4.0.0",
+        "connect": "^3.3.0",
+        "gulp-sourcemaps": "^1.5.1",
+        "gulp-handlebars ": "^4.0.0",
+        "gulp-declare": "^0.3.0",
+        "gulp-wrap": "^0.11.0",
+        "gulp-inject": "^1.2.0",
+        "gulp-batch": "^1.0.0"
+    },
+    "dependencies": {
+        "linkurious" : "https://github.com/Linkurious/linkurious.js/archive/v1.0.6.tar.gz",
+        "underscore" : "^1.0.0",
+        "mustache" : "^1.0.0",
+        "bootstrap": "^3.0.0",
+        "codemirror": "^5.0.0",
+        "font-awesome" : "^4.0.0",
+        "sigma": "https://github.com/sim51/sigma.js/archive/master.tar.gz",
+        "handlebars": "^3.0.0",
+        "file-dependencies": "^1.0.0"
+    },
+    "scripts": {
+        "start": "gulp",
+        "build": "gulp build"
+    }
+}
