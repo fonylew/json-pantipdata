@@ -15,3 +15,8 @@ pull this repository in the same level as pantip-samples folder
 │
 .
 ```
+
+# export
+```
+docker export graphdb|gzip >  graphdb.tar.gz
+```
